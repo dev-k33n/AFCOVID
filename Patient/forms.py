@@ -2,13 +2,13 @@ from django.db import models
 from django import forms
 from django.forms import ModelForm
 
-from Patient.models import Patient
+from Patient.models import Patient, StatusLog, TreatmentLog
 
 class PatientBaseForm(ModelForm):
     class Meta:
         model = Patient
         fields = '__all__'
-        exclude = ('DataUser','ConfirmUser')
+        exclude = ('CurrentStatus', 'DataUser','CurrentTreatment','ConfirmUser')
 
         widgets = {
             'Date': forms.DateInput(
@@ -60,6 +60,12 @@ class PatientBaseForm(ModelForm):
                     attrs={'class': 'form-control', 
                         'rows': 3,
                         'cols': 40
+                        }),                                                                                                                      
+            'Corona3': forms.FileInput(
+                    attrs={'class': 'form-control'
+                        }),                                                                                                                      
+            'DetectedResult': forms.FileInput(
+                    attrs={'class': 'form-control'
                         }),                                                                                                                      
             'Comment': forms.Textarea(
                     attrs={'class': 'form-control', 

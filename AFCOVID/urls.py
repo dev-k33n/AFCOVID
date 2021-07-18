@@ -8,9 +8,6 @@ from UserData.forms import MyLoginView
 from django.conf.urls.static import static
 from UserData.forms import MyLoginView
 
-def home(request):
-    return render(request,'_base.html')
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', MyLoginView.as_view(), name='login'),    
